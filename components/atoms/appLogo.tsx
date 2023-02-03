@@ -20,7 +20,7 @@ const AppLogo: FC = () => {
 		  />
 		  <Image
 			className="w-[50px] h-[50px]"
-			sec="/Astar_logo.png"
+			src="/Astar_logo.png"
 			alt="astar_logo"
 			width={30}
 			height={30}
@@ -29,4 +29,4 @@ const AppLogo: FC = () => {
       );      
 };
 
-export default AppLogl;
+export default AppLogo;

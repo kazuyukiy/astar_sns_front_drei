@@ -17,7 +17,7 @@ const HeaderProfile: FC<Props> = (props) => {
 	     	  <Image
 			className="w-[70px] h-[70px] rounded-full mr-3"
 			src={props.imgUrl}
-			alt="profile_logo"
+			alt="profile_logo_header_profile"
 			width={30}
 			height={30}
 		  />

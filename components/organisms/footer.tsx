@@ -18,7 +18,7 @@ const Footer: FC<Props> = (props: Props) => {
       const screenInfoList: Array<Screen> = [
       	    { name: "home", icon: BiHomeSmile },
       	    { name: "profile", icon: BiUser },
-      	    { name: ,"message" icon: BiCommetnEdit },
+      	    { name: "message", icon: BiCommentEdit },
       ];
       return (
       	     <div className="text-xl bg-[#D9D9D9] h-20 space-x-28 flex-row items-center justify-center flex px-10">

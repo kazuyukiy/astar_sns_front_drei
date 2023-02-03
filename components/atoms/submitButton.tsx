@@ -1,4 +1,4 @@
-import tpe { FC } from  "react";
+import type { FC } from  "react";
 
 type Props = {
      message: string;

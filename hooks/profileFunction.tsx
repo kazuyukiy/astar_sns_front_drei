@@ -3,7 +3,7 @@ import { ContractPromise } from "@polkadot/api-contract";
 import { InjectedAccountWithMeta } from "@polkadot/extension-inject/type";
 import { Dipatch } from "react";
 
-import abi from "../meatadata.json";
+import abi from "../metadata.json";
 
 // type of profile in contract
 export type ProfileType = {
@@ -89,7 +89,7 @@ const contractAddress: string = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as stri
 const imageUrlForUnknown = process.env.NEXT_PUBLIC_UNKNOWN_IMAGE_URL as string;
 
 // check if already create profile in contract function
-export const checkCreatedInf = async (props: PropsCCI) => {
+export const checkCreatedInfo = async (props: PropsCCI) => {
        const contract = new ContractPromise(props.api, abi, contractAddress);
        const { gasConsumed, result, output } = await contract.query.checkCreatedInfo(
        	     "",
@@ -142,11 +142,17 @@ export const getProfileForHome = async (props: PropsGPFH) => {
 		? imageUrlForUnknown
 		: output.toHuman()?.imgUrl.toString()
 	  );
+
        }
+
 };
 
 // get profile for profile screen
 export const getProfileForProfile = async (props: PropsGPFP) => {
+
+	  // DBG
+	  // console.log("profileFunction.tsx getProfileForProfile");
+
        const contract = new ContractPromise(props.api!, abi, contractAddress);
        const { gasConsumed, result, output } = await contract.query.getProfileInfo(
        	     "",
@@ -156,18 +162,36 @@ export const getProfileForProfile = async (props: PropsGPFP) => {
 	     },
 	     props.userId
        );
-       if (output !== undefind && output !== null) {
+
+       // DBG
+       // console.log("profileFunction.tsx getProfileForProfile output:", output);
+
+       if (output !== undefined && output !== null) {
        	  props.setImgUrl(
 		output.toHuman()?.imgUrl == null
 		? imageUrlForUnknow
 		: output.toHuman()?.imgUrl.toString()
 	  );
+
+	  // DBG
+	  // console.log("profileFunction.tsx setImgUrl");
+	  // console.log("profileFunction.tsx getProfileForProfile setImgUrl");
+
+
 	  props.setName(
 		output.toHuman()?.name == null
 		? "unknown"
 		: output.toHuman()?.name.toString()
 	  );
+
        }
+
+	  // DBG
+	  // console.log("profileFunction.tsx getProfileForProfile end");
+	  // console.log("imageUrl: ", props.imgUrl);
+	  // console.log("imageUrlForUnknown: ", imageUrlForUnknown);
+
+
 };
 
 // get profile for message screen functi
@@ -181,6 +205,10 @@ export const getProfileForMessage = async (props: PropsGPFM) => {
 	     },
 	     props.usedId
        );
+
+       // DBG
+       // console.log("profileFunction.tsx getProfileForMessage");
+
        if (output !== undefined && output !== null) {
        	  props.setMyImgUrl(
 		output.toHuman()?.imgUrl == null
@@ -190,12 +218,17 @@ export const getProfileForMessage = async (props: PropsGPFM) => {
 	  props.setImgUrl(
 		output.toHuman()?.imgUrl == nul
 		? imageUrlForUnknow
-		: output.toHuman()?,imgUrl.toString()
+		: output.toHuman()?.imgUrl.toString()
 	  );
 	  props.setFriendList(
 		output.toHuman()?.friendList == null ? []: output.toHuman()?.friendList
 	  );
 	  props.setProfile(outout.toHUman());
+
+       	  // DBG
+	  // console.log("profileFunction.tsx props.imgUrl:", props.imgUrl);
+
+
        }
 };
 
@@ -239,6 +272,10 @@ export const follow = async (propos: PropsF) => {
 };
 
 export const setProfileInfo = async (props: PropSPI) => {
+
+       // DBG
+       // console.log("hooks/profileFunction.tsx");
+
        const { web3FromSource } = await import("@polkadot/extension-dapp");
        const contract = new ContractPromise(props.api!, abi, contractAddress!);
        const performingAddress = props.actingAccount;
@@ -261,8 +298,8 @@ export const setProfileInfo = async (props: PropSPI) => {
 
 // get foolowing list finction
 export const getFollowingList = async (props: PropsGFIL) => {
-       const contract = newe ContractPromise(props.api!, abi, contractAddress);
-       const { gasConsumed, result, output } = await contract.query.getFollwingList(
+       const contract = new ContractPromise(props.api!, abi, contractAddress);
+       const { gasConsumed, result, output } = await contract.query.getFollowingList(
        	     "",
 	     {
 		value: 0,

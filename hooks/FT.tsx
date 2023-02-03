@@ -5,7 +5,7 @@ import { ContractPromise } from "@polkadot/api-contract";
 import { InjectedAccountWithMeta } from "@polkadot/extension-inject/type";
 import { Dipatch } from "react";
 
-import abi from "../meatadata.json";
+import abi from "../metadata.json";
 
 type PropsBO = {
      api: ApiPromise | undefined;
@@ -28,7 +28,7 @@ const contractAddress: string = process.env
       .NEXT_PUBLIC_CONTRACT_ADDRESS as String;
 
 export const balanceOf = async (props: PropsBO) => {
-       const contract = new ContractPromise(props.api!, contractAddress);
+       const contract = new ContractPromise(props.api!, abi, contractAddress);
        const { gasConsumed, result, output } = await contract.query.balanceOf(
        	     "",
 	     {
@@ -47,7 +47,7 @@ export const transfer = async (props: PropsTF) => {
        const contract = new ContractPromise(props.api!, abi, contractAddress);
        const performingAccount = props.actingAccount;
        const injector = await web3FromSource(performingAccount.meta.source);
-       const data = new Data();
+       // const date = new Date();
        const transfer = await contract.tx.transfer(
        	     {
 		value: 0,
@@ -64,13 +64,13 @@ export const transfer = async (props: PropsTF) => {
        }
 };
 
-export const destributeReferLikes = async (proops: PropsDRL) => {
-       const { web3FromSource } = asait import("@poladot/extension-dapp");
+export const distributeReferLikes = async (props: PropsDRL) => {
+       const { web3FromSource } = await import("@polkadot/extension-dapp");
        const contract = new ContractPromise(props.api!, abi, contractAddress);
        const performingAccount = props.actingAccount;
        const injector = await web3FromSource(performingAccount.meta.source);
-       const data = new Data();
-       const transfer = await contract.tx.distributeReferLinks({
+       const date = new Date();
+       const transfer = await contract.tx.distributeReferLikes({
               value: 0,
 	      gasLimit: 31518000000,
        });

@@ -21,7 +21,7 @@ type Props = {
 // connect contract
 export const connectToContract = async (props: Props) => {
        // rpc URL
-       const blockchainUrl = "wc://127.0.0.1:9944";
+       const blockchainUrl = "ws://127.0.0.1:9944";
 
        // account info
        const extensionSetup = async () => {
@@ -34,12 +34,16 @@ export const connectToContract = async (props: Props) => {
 	     }
 	     const accounts = await web3Accounts();
 	     props.setAccountList(accounts);
-	     props.setActiongAccount(accounts[0]);
+
+	     // console.log("connect.tsx accounts.length:", accounts.length);
+	     // props.setActingAccount(accounts[0]);
+	     const accountPos = accounts.length == 0 ? 0 : accounts.length -1;
+	     props.setActingAccount(accounts[accountPos]);
 	     props.setIsSetup(true);
        };
 
        // connect contract
-       const wsProvider = new WcProvider(blockchainUrl);
+       const wsProvider = new WsProvider(blockchainUrl);
        const connectedApi = await ApiPromise.create({ provider: wsProvider });
        props.setApi(connectedApi);
        await extensionSetup();

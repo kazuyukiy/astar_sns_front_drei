@@ -5,18 +5,18 @@ import React, { useEffect, useState } from "react";
 import BottomNavigation from "../components/bottomNavigation";
 import Post from "../components/post";
 import ProfileSettingModal from "../components/profileSettingModal";
-import ProfileSubBar from "../components/profileSubTopBar";
+import ProfileSubTopBar from "../components/profileSubTopBar";
 import TopBar from "../components/topBar";
 import { connectToContract } from "../hooks/connect";
 import { balanceOf } from "../hooks/FT";
 import { PostType } from "../hooks/postFunction";
-import { getIndividualPost } from "../hooks/posFunction";
+import { getIndividualPost } from "../hooks/postFunction";
 import {
        checkCreatedInfo,
        createProfile,
        getFollowerList,
        getFollowingList,
-       getProfileForProFile
+       getProfileForProfile
        } from "../hooks/profileFunction";
 
 export default function profile(props: any) {
@@ -26,7 +26,7 @@ export default function profile(props: any) {
        const [name,setName] = useState("");
        const [individualPostList,setIndividualPostList] = useState<PpostType[]>([]);
        
-       const [showSettingPostModal, setShowSettingPostModal] = useState(false);
+       const [showSettingModal, setShowSettingModal] = useState(false);
        const [isSetup, setIsSetup] = useState(false);
        const [api, setApi] = useState<ApiPromise>();
        const [accountList, setAccountList] = useState<InjectedAccountWithMeta[]>([]);
@@ -37,7 +37,7 @@ export default function profile(props: any) {
 
        useEffect(() => {
          connectToContract({
-	   api: ati,
+	   api: api,
 	   accountList: accountList,
 	   actingAccount: actingAccount!,
 	   isSetup: isSetup,
@@ -46,66 +46,84 @@ export default function profile(props: any) {
 	   setActingAccount: setActingAccount!,
 	   setIsSetup: setIsSetup,
 	 });
+
+	 // DBG
+	 // console.log("pages/profile.tsx isSetup:", isSetup);
+	 
 	 if (!isSetup) return;
+	 
 	 getProfileForProfile({
-	   api: api!,
-	   userId: actingAccount?.address!,
+	   api: api,
+	   userId: actingAccount?.address,
 	   setImgUrl: setImgUrl,
 	   setName: setName,
 	 });
 	 getIndividualPost({
-	   api: api!,
+	   api: api,
 	   actingAccount: actingAccount,
-	   setIndividualPostList: setGeraralPostList
+	   setIndividualPostList: setIndividualPostList,
 	 });
-	 getFollowingList((
+	 getFollowingList({
 	   api: api,
-	   userId: actingAccount?.address!,
+	   userId: actingAccount?.address,
 	   setFollowingList: setFollowingList,
-	 ));
-	 getFollowerList((
+	 });
+	 getFollowerList({
 	   api: api,
-	   userId: actingAccount?.address!,
+	   userId: actingAccount?.address,
 	   setFollowerList: setFollowerList,
-	 ));
+	 });
 	 balanceOf({
 	   api: api,
 	   actingAccount: actingAccount!,
 	   setBalance: setBalance,
 	 });
+	 
 	 if (isCreatedFnRun) return;
+	 
 	 checkCreatedInfo({
 	   api: api,
 	   userId: actingAccount?.address!,
 	   setIsCreatedProfile: setIsCreatedProfile,
 	 });
+	 
 	 if (isCreatedProfile) return;
+	 
 	 createProfile({ api: api, actingAccount: actingAccount! });
 	 setIsCreatedFnRun(true);
        });
 
+
+
        return (
        	      <div className="flex justify-center items-cener by-gray-200 w-screen h-screen relative">
 	      	   <main className="items-center h-screen w-1/3 flex bg-white flex-col">
+		   
 		   	 <ProfileSettingModal
-				isOpen={showNewPostModal}
+				isOpen={showSettingModal}
 				afterOpenFn={setShowSettingModal}
-				api={api!}
-				userId={actingAcount?.address}
+				api={api}
+				userId={actingAccount?.address}
 				setImgUrl={setImgUrl}
 				setName={setName}
-				actingAccount={actingAccount!}
+				actingAccount={actingAccount}
 			 />
+
 			 <TopBar
 				idList={accountList}
 				imgUrl={imgUrl}
 				setActingAccount={setActingAccount}
 				balance={balance}
 			 />
+			 
+			 // DBG ProfileSubTopBar
+			 imgUrl: "{imgUrl}"
+			 
 			 <ProfileSubTopBar
 				imgUrl={imgUrl}
 				name={name}
 				followingList={followingList}
+				followerList={followerList}
 				isOpenModal={setShowSettingModal}
 				setActingAccount={setActingAccount}
 			 	idList={accountList}
@@ -113,6 +131,7 @@ export default function profile(props: any) {
 				actingAccount={actingAccount!}
 				setIsCreatedFnRun={setIsCreatedFnRun}
 			 />
+			 
 			 <div className="flex-1 overflow-scroll">
 			      {individualPostList.map((post) => (
 			        <Post

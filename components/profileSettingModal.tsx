@@ -16,6 +16,10 @@ type Props = {
 };
 
 export default function ProfileSettingModal(props: Props) {
+
+       // DBG
+       // console.log("components/profileSettingModal.tsx");
+
        const submit = async (event: any) => {
        	     event.preventDafault();
 	     await setProfileInfo({
@@ -24,6 +28,10 @@ export default function ProfileSettingModal(props: Props) {
 		   name: event.target.name.value,
 		   imgUrl: event.target.img_url.value,
 	     });
+
+       // DBG
+       // console.log("components/profileSettingModal.tsx calling getProfileForProfile");
+
 	     await getProfileForProfile({
 	     	   api: props.api,
 		   userId: props.actingAccount?.address,
@@ -40,6 +48,9 @@ export default function ProfileSettingModal(props: Props) {
 		className="flex items-center justify-center h-screen"
 		isOpen={props.isOpen}
 	      >
+
+	      // DBG components/profileSettingModal.tsx Modal startchin
+	      
 		<form
 			onSubmit={submit}
 			className="h-1/2 w-1/5 bg-gray-200 flex flex-col items-center justify-cener"

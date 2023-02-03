@@ -1,5 +1,5 @@
 import { Dispatch, FC } from "react";
-import { BgGear } from "react-icons/bs";
+import { BsGear } from "react-icons/bs";
 
 type Props = {
      isOpenModal: Dispatch<React.SetStateAction<boolean>>;

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import{ FC } from "react";
 
-const DiconnectButton: FC = () => {
+const DisconnectButton: FC = () => {
       const router = useRouter();
       return (
       	     <button

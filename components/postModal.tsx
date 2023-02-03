@@ -3,8 +3,8 @@ import { InjectedAccountWithMeta } from "@polkadot/extension-inject/types";
 import { Dispatch } from "react";
 import Modal from "react-modal";
 
-import { releasePost } from "../hook/postFunction";
-import { ImputGroup } from "./organisms/inputGroup";
+import { releasePost } from "../hooks/postFunction";
+import { InputGroup } from "./organisms/inputGroup";
 
 type Props = {
      isOpen: boolean;
@@ -17,7 +17,7 @@ export default function PostModal(props: Props) {
        const submit = async (event: any) => {
        	     event.preventDefault();
 	     await releasePost({
-	     	   api: props.api;
+	     	   api: props.api,
 		   actingAccount: props.actingAccount,
 		   description: event.target.description.value,
 		   imgUrl: event.target.imgUrl.value,

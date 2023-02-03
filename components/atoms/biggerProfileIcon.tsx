@@ -1,4 +1,4 @@
-import Image form "next/image";
+import Image from "next/image";
 import type { FC } from "react";
 
 type Props = {
@@ -10,7 +10,7 @@ export const BiggerProfileIcon: FC<Props> = (props: Props) => {
        	      <Image
 		className="rounded-full h-24 w-24 mx-2"
 		src={props.imgUrl}
-		alt="profile_logo"
+		alt="profile_logo_bigger"
 		width={30}
 		height={30}
 		quality={100}

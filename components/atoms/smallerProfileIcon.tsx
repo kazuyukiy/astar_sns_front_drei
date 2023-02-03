@@ -27,7 +27,7 @@ export const SmalleerProfileIcon: FC<Props> = (props: Props) => {
 		onClick={implementFollow}
 		className="rounded-full h-12 w-12 mx-2"
 		src={props.imgUrl}
-		alt="profile_logo"
+		alt="profile_logo_smaller"
 		width={30}
 		height={30}
 		quality={180}

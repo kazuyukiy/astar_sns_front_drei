@@ -21,7 +21,7 @@ export default function Message(props: any) {
 			     <Image
 				className="rounded-full h-10 w-10 mx-2 items-center"
 				src={props.img_url}
-				alt="profile_logo"
+				alt="profile_logo_message
 				width={30}
 				height={30}
 				quality={100}

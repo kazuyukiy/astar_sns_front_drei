@@ -3,7 +3,7 @@ import React from "react";
 import { AiFillHeart } from "react-icons/ai";
 
 import { addLikes } from "../hooks/postFunction";
-import { SmallerProfileIcon } from ".atoms/smallerProfileIcon";
+import { SmallerProfileIcon } from "./atoms/smallerProfileIcon";
 
 export default function Post(props: any) {
        return (
@@ -24,7 +24,7 @@ export default function Post(props: any) {
 		      <Image
 			className="mr-3"
 			src={props.post_img_url}
-			alt="profile_logo"
+			alt="profile_logo_post"
 			width={250}
 			height={250}
 			quality={100}

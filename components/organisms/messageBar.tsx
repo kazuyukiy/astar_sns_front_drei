@@ -15,7 +15,7 @@ export const MessageBar: FC<Props> = (props: Props) => {
 	      	   <Image
 			className="rounded-full h-16 w-16 mx-2"
 			src={props.userImgUrl}
-			alt="profile_logo"
+			alt="profile_logo_message_bar"
 			width={30}
 			height={30}
 			quality={100}

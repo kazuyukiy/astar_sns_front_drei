@@ -3,7 +3,7 @@ import { ContractPromise } from "@polkadot/api-contract";
 import { InjectedAccountWithMeta } from "@polkadot/extension-inject/type";
 import { Dipatch } from "react";
 
-import abi from "../meatadata.json";
+import abi from "../metadata.json";
 
 // type for post in contract
 export type PostType = {
@@ -20,7 +20,7 @@ export type PostType = {
 // type for releasePost function
 type PropsRP = {
      api: ApiPromise;
-     setGeneralPostList: Dispatch<React.SetStateAction<PostType[[]>>;
+     setGeneralPostList: Dispatch<React.SetStateAction<PostType[]>>;
 };
 
 // type for addLikes function
@@ -37,7 +37,7 @@ type PropsGIP = {
      setIndividualPostList: Dispatch<React.SetStateAction<PostType[]>>;
 };
 
-const contractAddress: sting = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as string:
+const contractAddress: sting = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as string;
 
 // relase post function
 export const releasePost = async (props: PropsRP) => {
@@ -79,8 +79,8 @@ export const getGeneralPost = async (props: PropsGGP) => {
 	     },
 	     1
        );
-       if (output !== undefined && outpu !== null) {
-       	  if (output !== undefined && outpu !== null) {
+       if (output !== undefined && output !== null) {
+       	  if (output !== undefined && output !== null) {
 	     props.setGeneralPostLimit(
 		output.toHuman() == null ? [] : outout.toHuman()
 	     );
@@ -112,7 +112,7 @@ export const addLikes = async (props: PropsAL) => {
 
 // get individual post function
 export const getIndividualPost = async (props: PropsGIP) => {
-       const contract = neww ContractPromise(props.api!, abi, contractAddress!);
+       const contract = new ContractPromise(props.api!, abi, contractAddress!);
        const { gasConsumed, result, output } = await contract.query.getIndividualPost(
        	     "",
 	     {

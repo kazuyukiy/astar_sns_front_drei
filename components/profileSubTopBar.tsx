@@ -2,7 +2,7 @@ import { ApriPromise } from "@poladot/api";
 import { InjectedAccountWithMeta } from "@polkadot/extension-inject/type";
 import React, { Dispatch } from  "react";
 
-import { BIggerProfileIcon } from "./atoms/biggerProfileIcon";
+import { BiggerProfileIcon } from "./atoms/biggerProfileIcon";
 import { ProfileList } from "./molecules/profileList";
 
 type Props = {
@@ -24,7 +24,7 @@ export default function ProfileSubTopBar(props: Props) {
        return (
        	      <div className="flex flex-row mt-2 border-b-2 w-full items-center justify-center">
 	      	   <BiggerProfileIcon imgUrl={props.imgUrl} />
-		   <profileList
+		   <ProfileList
 			name={props.name}
 			isOpenModal={props.isOpenModal}
 			setActingAccount={props.setActingAccount}

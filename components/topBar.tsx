@@ -1,4 +1,4 @@
-imiport { userRouter } from "next/router";
+import { useRouter } from "next/router";
 import React from "react";
 
 import Header from "./organisms/header";

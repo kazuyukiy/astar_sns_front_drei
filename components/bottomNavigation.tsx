@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 
-import Footer from "./oganisms/footer";
+import Footer from "./organisms/footer";
 
 export default function BottomNavigation(propos: any) {
        const router = useRouter();

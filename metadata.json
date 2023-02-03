@@ -1,6 +1,6 @@
 {
   "source": {
-    "hash": "0x7910778b06168543df793886cef82fef263369e630676cc26ce1acc39118c2e4",
+    "hash": "0x44636b24253c388b848665c7b01a4857a5691a5a5e7c02ba6a05bd6dcfe891cc",
     "language": "ink! 3.3.0",
     "compiler": "rustc 1.69.0-nightly"
   },
@@ -465,11 +465,11 @@
         {
           "args": [],
           "docs": [],
-          "label": "distrubute_refer_likes",
+          "label": "distribute_refer_likes",
           "mutates": true,
           "payable": false,
           "returnType": null,
-          "selector": "0xc8f9a3d6"
+          "selector": "0xebf10501"
         }
       ]
     },

@@ -2,9 +2,9 @@ import { ApiPromise } from "@polkadot/api";
 import { InjectedAccountWithMeta } from "@polkadot/extension-inject/types";
 import type  { Dispathc, FC } from "react";
 
-import { ProfileTitle } from "react";
+import { ProfileTitle } from "../atoms/profileTitle";
 
-import { WalletAddressSection } from "../atoms/walletAddressSelection";
+import { WalletAddressSelection } from "../atoms/walletAddressSelection";
 
 type Props = {
      name: string;

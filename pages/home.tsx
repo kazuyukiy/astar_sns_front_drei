@@ -20,7 +20,7 @@ export default function home() {
        const [isCreatedFnRun, setIsCreatedFnRun] = useState(false);
        const [showNewPostModal, setShowNewPostModal] = useState(false);
        const [isSetup, setIsSetup] = useState(false);
-       const [isDitributed, setIsDitributed] = useState(false);
+       const [isDistributed, setIsDistributed] = useState(false);
 
        const [imgUrl, setImgUrl] = useState("");
        const [accountList, setAccountList] = useState<InjectedAccountWithMeta[]>([]);
@@ -28,9 +28,9 @@ export default function home() {
        const [generalPostList,setGeneralPostList] = useState<PpostType[]>([]);
        const [balance, setBalance] = useState<string>("0");
 
-       userEffect(() => {
+       useEffect(() => {
          connectToContract({
-	   api: ati,
+	   api: api,
 	   accountList: accountList,
 	   actingAccount: actingAccount!,
 	   isSetup: isSetup,
@@ -50,13 +50,13 @@ export default function home() {
 	   actingAccount: actingAccount!,
 	   setBalance: setBalance,
 	 });
-	 getGeneralPost({ api: api!, setGeneralPostList: setGeraralPostList });
-	 if (isDstributed) return;
-	 distrbutedReferLikes({
+	 getGeneralPost({ api: api!, setGeneralPostList: setGeneralPostList });
+	 if (isDistributed) return;
+	 distributeReferLikes({
 	   api: api,
 	   actingAccount: actingAccount!,
 	 });
-	 setIsDistrbuted(true);
+	 setIsDistributed(true);
 	 if (isCreatedFnRun) return;
 	 checkCreatedInfo({
 	   api: api,
