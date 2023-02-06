@@ -1,7 +1,6 @@
 import { ApiPromise } from "@polkadot/api";
 import type { InjectedAccountWithMeta } from "@polkadot/extension-inject/types";
 import React, { useEffect, useState } from "react";
-
 import BottomNavigation from "../components/bottomNavigation";
 import Post from "../components/post";
 import ProfileSettingModal from "../components/profileSettingModal";
@@ -46,12 +45,7 @@ export default function profile(props: any) {
 	   setActingAccount: setActingAccount!,
 	   setIsSetup: setIsSetup,
 	 });
-
-	 // DBG
-	 // console.log("pages/profile.tsx isSetup:", isSetup);
-	 
 	 if (!isSetup) return;
-	 
 	 getProfileForProfile({
 	   api: api,
 	   userId: actingAccount?.address,
@@ -80,20 +74,15 @@ export default function profile(props: any) {
 	 });
 	 
 	 if (isCreatedFnRun) return;
-	 
 	 checkCreatedInfo({
 	   api: api,
 	   userId: actingAccount?.address!,
 	   setIsCreatedProfile: setIsCreatedProfile,
 	 });
-	 
 	 if (isCreatedProfile) return;
-	 
 	 createProfile({ api: api, actingAccount: actingAccount! });
 	 setIsCreatedFnRun(true);
        });
-
-
 
        return (
        	      <div className="flex justify-center items-cener by-gray-200 w-screen h-screen relative">
@@ -115,9 +104,6 @@ export default function profile(props: any) {
 				setActingAccount={setActingAccount}
 				balance={balance}
 			 />
-			 
-			 // DBG ProfileSubTopBar
-			 imgUrl: "{imgUrl}"
 			 
 			 <ProfileSubTopBar
 				imgUrl={imgUrl}

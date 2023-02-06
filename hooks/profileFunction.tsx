@@ -149,10 +149,6 @@ export const getProfileForHome = async (props: PropsGPFH) => {
 
 // get profile for profile screen
 export const getProfileForProfile = async (props: PropsGPFP) => {
-
-	  // DBG
-	  // console.log("profileFunction.tsx getProfileForProfile");
-
        const contract = new ContractPromise(props.api!, abi, contractAddress);
        const { gasConsumed, result, output } = await contract.query.getProfileInfo(
        	     "",
@@ -162,22 +158,12 @@ export const getProfileForProfile = async (props: PropsGPFP) => {
 	     },
 	     props.userId
        );
-
-       // DBG
-       // console.log("profileFunction.tsx getProfileForProfile output:", output);
-
        if (output !== undefined && output !== null) {
        	  props.setImgUrl(
 		output.toHuman()?.imgUrl == null
 		? imageUrlForUnknow
 		: output.toHuman()?.imgUrl.toString()
 	  );
-
-	  // DBG
-	  // console.log("profileFunction.tsx setImgUrl");
-	  // console.log("profileFunction.tsx getProfileForProfile setImgUrl");
-
-
 	  props.setName(
 		output.toHuman()?.name == null
 		? "unknown"
@@ -185,13 +171,6 @@ export const getProfileForProfile = async (props: PropsGPFP) => {
 	  );
 
        }
-
-	  // DBG
-	  // console.log("profileFunction.tsx getProfileForProfile end");
-	  // console.log("imageUrl: ", props.imgUrl);
-	  // console.log("imageUrlForUnknown: ", imageUrlForUnknown);
-
-
 };
 
 // get profile for message screen functi
@@ -205,10 +184,6 @@ export const getProfileForMessage = async (props: PropsGPFM) => {
 	     },
 	     props.usedId
        );
-
-       // DBG
-       // console.log("profileFunction.tsx getProfileForMessage");
-
        if (output !== undefined && output !== null) {
        	  props.setMyImgUrl(
 		output.toHuman()?.imgUrl == null
@@ -224,11 +199,6 @@ export const getProfileForMessage = async (props: PropsGPFM) => {
 		output.toHuman()?.friendList == null ? []: output.toHuman()?.friendList
 	  );
 	  props.setProfile(outout.toHUman());
-
-       	  // DBG
-	  // console.log("profileFunction.tsx props.imgUrl:", props.imgUrl);
-
-
        }
 };
 
@@ -272,10 +242,6 @@ export const follow = async (propos: PropsF) => {
 };
 
 export const setProfileInfo = async (props: PropSPI) => {
-
-       // DBG
-       // console.log("hooks/profileFunction.tsx");
-
        const { web3FromSource } = await import("@polkadot/extension-dapp");
        const contract = new ContractPromise(props.api!, abi, contractAddress!);
        const performingAddress = props.actingAccount;

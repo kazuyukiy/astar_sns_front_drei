@@ -1,6 +1,6 @@
 import { ApiPromise } from "@polkadot/api";
 import { InjectedAccountWithMeta } from "@polkadot/extension-inject/types";
-import type  { Dispathc, FC } from "react";
+import type  { Dispatch, FC } from "react";
 
 import { ProfileTitle } from "../atoms/profileTitle";
 
